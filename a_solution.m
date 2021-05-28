@@ -2,8 +2,8 @@ clc
 clear all
 close all
 
-load code/P_ref
-
+load data/P_ref
+load data/glebokosc.m
 a = 0;
 b = 5;
 
