@@ -8,16 +8,16 @@ surf(XX,YY,FF)
 shading interp
 axis equal
 
-N = 10^5
+N = 1e5;
 
-f_min = -44
-f_max = 0
-x_min = 0
-x_max = 100
-y_min = 0
-y_max = 100
-z_min = -50
-z_max = 0 
+f_min = -44;
+f_max = 0;
+x_min = 0;
+x_max = 100;
+y_min = 0;
+y_max = 100;
+z_min = -50;
+z_max = 0;
 delta_x = x_max-x_min;
 delta_y = y_max-y_min;
 delta_z = z_max-z_min;
