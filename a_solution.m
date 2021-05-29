@@ -6,43 +6,43 @@ load data/P_ref
 a = 0;
 b = 5;
 
-result_squares = [];
+result_rectangles = [];
 result_trapezoid = [];
 result_simpson = [];
 result_montecarlo = [];
 
 %N is the count of intervals
 for N = 5:50:10^4
-   result_squares = [result_squares, integrateSquares(a,b, N)];
+   result_rectangles = [result_rectangles, integraterectangles(a,b, N)];
    result_trapezoid = [result_trapezoid, integrateTrapezoid(a,b,N)];
    result_simpson = [result_simpson, integrateSimpson(a,b,N)];
    result_montecarlo = [result_montecarlo, integrateMonteCarlo(a,b,N)];
 end
 
 
-integration_error_squares = abs(result_squares-P_ref);
+integration_error_rectangles = abs(result_rectangles-P_ref);
 integration_error_trapezoid = abs(result_trapezoid-P_ref);
 integration_error_simpson = abs(result_simpson-P_ref);
 integration_error_montecarlo = abs(result_montecarlo-P_ref);
 
 
 x = 5:50:10^4;
-save_loglog_plot(x, integration_error_squares,'error - square integration','plots/squares_integration_errors.png');
+save_loglog_plot(x, integration_error_rectangles,'error - rectangle integration','plots/rectangles_integration_errors.png');
 save_loglog_plot(x, integration_error_trapezoid, 'error - trapezoid integration', 'plots/trapezoid_integration_errors.png');
 save_loglog_plot(x, integration_error_montecarlo, 'error - montecarlo integration', 'plots/montecarlo_integration_errors.png');
 save_loglog_plot(x, integration_error_simpson, 'error - simpson integration', 'plots/simpson_integration_errors.png');
 
 N = 10^7;
-time_vector = [timeIt(@integrateSquares, [a,b,N]), timeIt(@integrateTrapezoid, [a,b,N]), timeIt(@integrateSimpson, [a,b,N]), timeIt(@integrateMonteCarlo, [a,b,N])];
-labels = categorical({'square','trapezoid','Simpson','MonteCarlo'});
-labels = reordercats(labels,{'square','trapezoid','Simpson','MonteCarlo'});
+time_vector = [timeIt(@integraterectangles, [a,b,N]), timeIt(@integrateTrapezoid, [a,b,N]), timeIt(@integrateSimpson, [a,b,N]), timeIt(@integrateMonteCarlo, [a,b,N])];
+labels = categorical({'rectangle','trapezoid','Simpson','MonteCarlo'});
+labels = reordercats(labels,{'rectangle','trapezoid','Simpson','MonteCarlo'});
 bar(labels, time_vector);
 title('calculation time for 10^7');
 xlabel('used method');
 ylabel('time [s]');
 saveas(gcf, 'plots/methods_comparision.png');
 
-function result = integrateSquares(a, b, N)
+function result = integraterectangles(a, b, N)
     d_x = (b-a)/N;
     result = 0;
     for i = 1:N
@@ -96,10 +96,10 @@ function result = function_t(t)
     result = 1/(sigma * sqrt(2*pi)) * exp(-(t-mu)^2/(2*sigma^2));
 end
 
-function save_loglog_plot(N_vector, integration_error_squares, plot_title, filename)
+function save_loglog_plot(N_vector, integration_error_rectangles, plot_title, filename)
     x_label_text = 'interval count';
     y_label_text = 'error val';
-    loglog(N_vector, integration_error_squares);
+    loglog(N_vector, integration_error_rectangles);
     title(plot_title);
     xlabel(x_label_text);
     ylabel(y_label_text);
