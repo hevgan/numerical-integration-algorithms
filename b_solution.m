@@ -2,7 +2,7 @@ clc
 clear all
 close all
 
-load data/dane_jezioro
+load data/lake_depth_data
 
 surf(XX,YY,FF)
 shading interp
@@ -27,7 +27,7 @@ for i = 1:N
     x = rand() * delta_x + x_min;
     y = rand() * delta_y + y_min;
     z = rand() * delta_z +z_min;
-    f_x = glebokosc(x,y);
+    f_x = depth(x,y);
     if z <= f_max && z > f_x
        N_1 = N_1 + 1; 
     end
