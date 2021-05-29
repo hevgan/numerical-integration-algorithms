@@ -7,6 +7,6 @@
 And use them to calculate the probability of a electronic device malfunctioning (in the first 5 years)
 
 ## The probability probability density function used for calculation:
-<img src="https://latex.codecogs.com/svg.latex?\Large&space;f(t)=\frac{1}{\sigma\cdot\sqrt{2\Pi}}^{e^{-\frac{(t-\mu)^2}{2\sigma^2}}}" title="probability function" />
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;f(t)=\frac{1}{\sigma\cdot\sqrt{2\pi}}^{e^{-\frac{(t-\mu)^2}{2\sigma^2}}}" title="probability function" />
 
 ## The second task was to use [Monte Carlo](https://en.wikipedia.org/wiki/Monte_Carlo_method) metod to calculate the volume of a lake. The lake data was provided by  and is located in [depth.m](https://github.com/hevgan/numerical-integration-algorithms/blob/main/depth.m).
